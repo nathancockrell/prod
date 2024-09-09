@@ -1,0 +1,38 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.actions {
+    margin-bottom: 20px;
+}
+
+label, input {
+    display: block;
+    margin-bottom: 10px;
+}
+
+button {
+    margin: 5px;
+}
+
+.label-div, .entry-div {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.label-div h3, .entry-div h3 {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.entry-div button {
+    margin-top: 5px;
+}
