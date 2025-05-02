@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Firebase Login (Modular CDN)</title>
+</head>
+<body>
+  <h2>Register</h2>
+  <input type="email" id="registerEmail" placeholder="Email" />
+  <input type="password" id="registerPassword" placeholder="Password" />
+  <button onclick="register()">Register</button>
+
+  <h2>Login</h2>
+  <input type="email" id="loginEmail" placeholder="Email" />
+  <input type="password" id="loginPassword" placeholder="Password" />
+  <button onclick="login()">Login</button>
+
+  <!-- Firebase Modular SDKs via CDN -->
+  <script type="module">
+    // ✅ Import modules
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-database.js";
+
+    // ✅ Firebase config
+    const firebaseConfig = {
+    apiKey: "AIzaSyBeEsgouNQVwOQGVZfDG7FY9JfxgAGsIZU",
+    authDomain: "prod-c26a1.firebaseapp.com",
+    projectId: "prod-c26a1",
+    storageBucket: "prod-c26a1.firebasestorage.app",
+    messagingSenderId: "279795802739",
+    appId: "1:279795802739:web:f96715a47635d2d3ef0006"
+  };
+
+    // ✅ Initialize Firebase (must come before getAuth/getDatabase)
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const database = getDatabase(app);
+
+    // ✅ Register user
+    window.register = function () {
+      const email = document.getElementById("registerEmail").value;
+      const password = document.getElementById("registerPassword").value;
+
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          return set(ref(database, "users/" + user.uid), {
+            email: user.email,
+            uid: user.uid
+          });
+        })
+        .then(() => {
+          alert("User registered and saved!");
+        })
+        .catch((error) => {
+          alert("Error: " + error.message);
+        });
+    };
+
+    // ✅ Login user
+    window.login = function () {
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          alert("Logged in as " + userCredential.user.email);
+        })
+        .catch((error) => {
+          alert("Error: " + error.message);
+        });
+    };
+  </script>
+</body>
+</html>

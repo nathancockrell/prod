@@ -1,0 +1,117 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Newsletter Signup</title>
+  <style>
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #fdfcfb;
+      color: #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      padding: 2rem;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .container img {
+      max-width: 100px;
+      margin-bottom: 1rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: #ff7a59;
+    }
+
+    input[type="email"],
+    input[type="text"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    label {
+      display: block;
+      margin: 1rem 0 0.5rem;
+      font-weight: bold;
+    }
+
+    .address-fields {
+      display: none;
+      text-align: left;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: center;
+      margin: 1rem 0;
+    }
+
+    .checkbox input {
+      margin-right: 0.5rem;
+    }
+
+    button {
+      background-color: #ff7a59;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff5c3d;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="https://cdn-icons-png.flaticon.com/512/742/742751.png" alt="Happy Mail Icon">
+    <h2>Keep in touch with us!</h2>
+    <form id="signupForm">
+      <input type="email" placeholder="Your email" required />
+
+      <div class="checkbox">
+        <input type="checkbox" id="physicalToggle" />
+        <label for="physicalToggle">Subscribe to physical delivery?</label>
+      </div>
+
+      <div class="address-fields" id="addressFields">
+        <input type="text" placeholder="Street Address" />
+        <input type="text" placeholder="City" />
+        <input type="text" placeholder="State/Province" />
+        <input type="text" placeholder="ZIP/Postal Code" />
+      </div>
+
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+
+  <script>
+    const checkbox = document.getElementById('physicalToggle');
+    const addressFields = document.getElementById('addressFields');
+
+    checkbox.addEventListener('change', () => {
+      addressFields.style.display = checkbox.checked ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Counter2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Default Dashboard</h1>
+
+  <div id="dashboard">
+    
+
+    <h2>Labels</h2>
+    <ul id="label-list"></ul>
+    <button id="add-label-btn">Add Label</button>
+
+    <h2>Counters</h2>
+    <ul id="counter-list"></ul>
+    <button id="add-counter-btn">Add Counter</button>
+
+    <h2>Entries</h2>
+    <ul id="entry-list"></ul>
+    <button id="add-entry-btn">Add Entry</button>
+  </div>
+
+  <!-- Modals for adding/editing data -->
+  <div id="entry-modal" class="modal">
+    <div class="modal-content">
+      <span id="entry-close" class="close">&times;</span>
+      <form id="entry-form">
+        <label for="entry-name">Name:</label>
+        <input type="text" id="entry-name" required>
+        <label for="entry-value">Value:</label>
+        <input type="number" id="entry-value" required>
+        <label for="entry-labels">Labels (comma separated):</label>
+        <input type="text" id="entry-labels" required>
+        <label for="entry-date">Date:</label>
+        <input type="date" id="entry-date" required>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="label-modal" class="modal">
+    <div class="modal-content">
+      <span id="label-close" class="close">&times;</span>
+      <form id="label-form">
+        <label for="label-name">Name:</label>
+        <input type="text" id="label-name" required>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="counter-modal" class="modal">
+    <div class="modal-content">
+      <span id="counter-close" class="close">&times;</span>
+      <form id="counter-form">
+        <label for="counter-name">Name:</label>
+        <input type="text" id="counter-name" required>
+        <label for="counter-labels">Labels (comma separated):</label>
+        <input type="text" id="counter-labels" required>
+        <button type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Edit Modal for Entries -->
+<div id="edit-entry-modal" class="modal">
+    <div class="modal-content">
+      <span id="edit-entry-close" class="close">&times;</span>
+      <form id="edit-entry-form">
+        <label for="edit-entry-name">Name:</label>
+        <input type="text" id="edit-entry-name" required>
+        <label for="edit-entry-value">Value:</label>
+        <input type="number" id="edit-entry-value" required>
+        <label for="edit-entry-labels">Labels (comma separated):</label>
+        <input type="text" id="edit-entry-labels" required>
+        <label for="edit-entry-date">Date:</label>
+        <input type="date" id="edit-entry-date" required>
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Edit Modal for Labels -->
+  <div id="edit-label-modal" class="modal">
+    <div class="modal-content">
+      <span id="edit-label-close" class="close">&times;</span>
+      <form id="edit-label-form">
+        <label for="edit-label-name">Name:</label>
+        <input type="text" id="edit-label-name" required>
+        <!-- In the edit-label modal -->
+<label for="edit-label-parent">Parent Label:</label>
+<select id="edit-label-parent">
+  <option value="">None</option>
+  <!-- Dynamically populate with existing labels -->
+</select>
+
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Edit Modal for Counters -->
+  <div id="edit-counter-modal" class="modal">
+    <div class="modal-content">
+      <span id="edit-counter-close" class="close">&times;</span>
+      <form id="edit-counter-form">
+        <label for="edit-counter-name">Name:</label>
+        <input type="text" id="edit-counter-name" required>
+        <label for="edit-counter-labels">Labels (comma separated):</label>
+        <input type="text" id="edit-counter-labels" required>
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  </div>
+  
+
+  <script src="storage.js"></script>
+  <script src="modals.js"></script>
+  <script src="dashboard.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
